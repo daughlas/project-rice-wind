@@ -1,6 +1,7 @@
 // pages/home/home.js
 const { Theme } = require("../../model/theme")
 const { Banner } = require("../../model/banner")
+const { Category } = require("../../model/category")
 
 Page({
 
@@ -9,7 +10,8 @@ Page({
    */
   data: {
     themeA: null,
-    bannerB: null
+    bannerB: null,
+    grid: []
   },
 
   /**
@@ -22,12 +24,12 @@ Page({
   async initAllData() {
     const themeA = await Theme.getHomeLocationA()
     const bannerB = await Banner.getHomeLocationB()
-    console.log(bannerB)
+    const grid = await Category.getHomeLocationC()
     this.setData({
       themeA: themeA[0],
-      bannerB
+      bannerB,
+      grid
     })
-
   },
 
   /**

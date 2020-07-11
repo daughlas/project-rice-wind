@@ -9,6 +9,6 @@
   "author": "lvjiawen <daughlas@gmail.com> (https://github.com/daughlas)",
   "license": "MIT",
   "dependencies": {
-    "lin-ui": "^0.8.4"
+    "lin-ui": "~0.8.4"
   }
 }

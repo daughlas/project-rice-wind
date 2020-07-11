@@ -1,10 +1,13 @@
-// components/demo/demo.js
+// components/category-grid/category-grid.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    data:Object
+    grid: {
+      type: Array,
+      value: []
+    }
   },
 
   /**

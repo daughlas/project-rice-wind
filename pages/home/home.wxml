@@ -9,9 +9,11 @@
     circular="{{true}}"
   >
     <block wx:for="{{bannerB.items}}">
-      <swiper-item >
+      <swiper-item>
         <image class="swiper" src="{{item.img}}"></image>
       </swiper-item>
     </block>
   </swiper>
+  
+  <s-category-grid grid="{{grid}}"></s-category-grid>
 </view>
