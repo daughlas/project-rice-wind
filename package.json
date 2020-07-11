@@ -1,0 +1,14 @@
+{
+  "name": "project-rice-wind",
+  "version": "0.1.0",
+  "description": "禾风电商小程序",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lvjiawen <daughlas@gmail.com> (https://github.com/daughlas)",
+  "license": "MIT",
+  "dependencies": {
+    "lin-ui": "^0.8.4"
+  }
+}
