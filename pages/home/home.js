@@ -2,6 +2,7 @@
 const { Theme } = require("../../model/theme")
 const { Banner } = require("../../model/banner")
 const { Category } = require("../../model/category")
+const { Activity } = require("../../model/activity")
 
 Page({
 
@@ -11,7 +12,8 @@ Page({
   data: {
     themeA: null,
     bannerB: null,
-    grid: []
+    grid: [],
+    activityD: null
   },
 
   /**
@@ -25,10 +27,12 @@ Page({
     const themeA = await Theme.getHomeLocationA()
     const bannerB = await Banner.getHomeLocationB()
     const grid = await Category.getHomeLocationC()
+    const activityD = await Activity.getHomeLocationD()
     this.setData({
       themeA: themeA[0],
       bannerB,
-      grid
+      grid,
+      activityD
     })
   },
 

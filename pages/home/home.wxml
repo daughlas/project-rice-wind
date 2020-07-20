@@ -1,5 +1,5 @@
 <!-- pages/home/home.wxml -->
-<view>
+<view class="container">
   <image class="top-theme" src="{{themeA.entrance_img}}"></image>
   <swiper 
     class="swiper"
@@ -16,4 +16,8 @@
   </swiper>
   
   <s-category-grid grid="{{grid}}"></s-category-grid>
+
+  <image class="activity" src="{{activityD.entrance_img}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+    
+  </image>
 </view>

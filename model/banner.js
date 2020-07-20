@@ -10,6 +10,6 @@ class Banner {
   }
 }
 
-module.exports = {
+export {
   Banner
 }
