@@ -1,8 +1,8 @@
 // pages/home/home.js
-const { Theme } = require("../../model/theme")
-const { Banner } = require("../../model/banner")
-const { Category } = require("../../model/category")
-const { Activity } = require("../../model/activity")
+const { Theme } = require("../../model/theme.js")
+const { Banner } = require("../../model/banner.js")
+const { Category } = require("../../model/category.js")
+const { Activity } = require("../../model/activity.js")
 
 Page({
 
@@ -12,6 +12,7 @@ Page({
   data: {
     themeA: null,
     bannerB: null,
+    themeE: null,
     grid: [],
     activityD: null
   },
@@ -24,12 +25,19 @@ Page({
   },
 
   async initAllData() {
-    const themeA = await Theme.getHomeLocationA()
+    const theme = new Theme()
+    await theme.getThemes()
+    const themeA = await theme.getHomeLocationA()
+    const themeE = await theme.getHomeLocationE()
     const bannerB = await Banner.getHomeLocationB()
     const grid = await Category.getHomeLocationC()
     const activityD = await Activity.getHomeLocationD()
+
+    // 保存数据 类的对象 本身就具有保存数据的功能
+
     this.setData({
-      themeA: themeA[0],
+      themeA,
+      themeE,
       bannerB,
       grid,
       activityD
