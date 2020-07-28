@@ -28,6 +28,20 @@ class Theme {
   async getHomeLocationE() {
     return this.themes.find(t => t.name === Theme.locationE)
   }
+
+  
+
+  // 先使用一个通用的，下面再写一个具体的
+  static getThemeSpuByName(name) {
+    return Http.request({
+      url: `/v1/theme/name/${name}/with_spu`
+    })
+  }
+
+  // 上面那个是具体
+  static getHomeLocationESpu() {
+    return Theme.getThemeSpuByName(Theme.locationE)
+  }
 }
 
 export {

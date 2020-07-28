@@ -18,6 +18,11 @@
   <s-category-grid grid="{{grid}}"></s-category-grid>
 
   <image class="activity" src="{{activityD.entrance_img}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
-    
   </image>
+  <s-spu-scroll
+    wx:if="{{themeE.online}}"
+    theme="{{themeE}}"
+    spu-list="{{themeESpu}}"
+  >
+  </s-spu-scroll>
 </view>
