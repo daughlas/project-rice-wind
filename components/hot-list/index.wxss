@@ -1,0 +1,39 @@
+/* components/hot-list/index.wxss */
+@import "../../wxss/common.wxss";
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40rpx;
+  background: #fff;
+}
+.title {
+  width: 690rpx;
+  height: 90rpx;
+}
+
+.inner-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30rpx;
+}
+
+.left {
+  display: flex;
+  width: 346rpx;
+  height: 522rpx;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.right-size {
+  display: flex;
+  height: 260rpx;
+  width: 400rpx;
+}

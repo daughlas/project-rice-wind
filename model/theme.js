@@ -21,15 +21,21 @@ class Theme {
   }
 
   // 合并请求一次获取所有数据
-  async getHomeLocationA() {
+  getHomeLocationA() {
     return this.themes.find(t => t.name === Theme.locationA)
   }
 
-  async getHomeLocationE() {
+  getHomeLocationE() {
     return this.themes.find(t => t.name === Theme.locationE)
   }
 
-  
+  getHomeLocationF() {
+    return this.themes.find(t => t.name === Theme.locationF)
+  }
+
+  getHomeLocationH() {
+    return this.themes.find(t => t.name === Theme.locationH)
+  }
 
   // 先使用一个通用的，下面再写一个具体的
   static getThemeSpuByName(name) {
