@@ -6,7 +6,7 @@
     scroll-x="true"
   >
     <view class="inner">
-      <block wx:for="{{spuList}}">
+      <block wx:for="{{spuList}}" :key="title">
         <view class="spu-container">
           <image class="spu-img" src="{{item.img}}"></image>
           <text class="spu-text">{{item.title.length >= 8 ? (s.substring(item.title, 0, 7) + '...') : item.title }}</text>

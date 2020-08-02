@@ -50,7 +50,7 @@ class Paging {
       }
     }
 
-    this.moreData = Paging._moreData(paging.totalPage, paging.page)
+    this.moreData = Paging._moreData(paging.total_page, paging.page)
     if (this.moreData) {
       this.start += this.count
     }
