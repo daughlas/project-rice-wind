@@ -1,24 +1,52 @@
 // 业务对象
 // 一定要定义好业务对象
-
 import { Http } from "../utils/http"
 
 class Theme {
   static locationA = 't-1'
   static locationE = 't-2'
-  // 合并请求一次获取所有数据
-  static async getHomeLocationA() {
-    return await Http.request({
+  static locationF = 't-3'
+  static locationH = 't-4'
+
+  themes = []
+
+  async getThemes() {
+    const names = `${Theme.locationA},${Theme.locationE},${Theme.locationF},${Theme.locationH}`
+    this.themes = await Http.request({
       url: `/v1/theme/by/names`,
-      data: {names: Theme.locationA},
+      data: {
+        names
+      }
     })
   }
 
-  static async getHomeLocationE() {
-    return await Http.request({
-      url: `/v1/theme/by/names`,
-      data: {names: 't-1'},
+  // 合并请求一次获取所有数据
+  getHomeLocationA() {
+    return this.themes.find(t => t.name === Theme.locationA)
+  }
+
+  getHomeLocationE() {
+    return this.themes.find(t => t.name === Theme.locationE)
+  }
+
+  getHomeLocationF() {
+    return this.themes.find(t => t.name === Theme.locationF)
+  }
+
+  getHomeLocationH() {
+    return this.themes.find(t => t.name === Theme.locationH)
+  }
+
+  // 先使用一个通用的，下面再写一个具体的
+  static getThemeSpuByName(name) {
+    return Http.request({
+      url: `/v1/theme/name/${name}/with_spu`
     })
+  }
+
+  // 上面那个是具体
+  static getHomeLocationESpu() {
+    return Theme.getThemeSpuByName(Theme.locationE)
   }
 }
 
