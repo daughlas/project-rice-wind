@@ -26,6 +26,14 @@ Component({
         w: 340,
         h: 340 * height / width
       })
+    },
+    onItemTap(event) {
+      const pid = event.currentTarget.dataset.pid
+      // 通用性，发送出去一个自定义事件
+      wx.navigateTo({
+        url: `/pages/detail/detail?pid=${pid}`
+      })
+
     }
   },
   observers: {

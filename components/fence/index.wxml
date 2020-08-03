@@ -1,0 +1,5 @@
+<!--components/fence/index.wxml-->
+<view class="container">
+  <view class="title">规格名</view>
+  <view>一组</view>
+</view>

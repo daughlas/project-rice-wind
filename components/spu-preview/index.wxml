@@ -1,6 +1,6 @@
 <!--components/spu-preview/index.wxml-->
 <wxs src="../../wxs/price.wxs" module="p"></wxs>
-<view class="container">
+<view class="container" data-pid="{{data.id}}" bind:tap="onItemTap">
   <!-- 自适应图片宽度方案一 -->
   <!-- <image mode="widthFix" class="img" src="{{data.img}}"></image> -->
   <!-- 自适应图片宽度方案二 -->

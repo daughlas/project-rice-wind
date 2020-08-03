@@ -1,9 +1,9 @@
 // pages/home/home.js
-const { Theme } = require("../../model/theme.js")
-const { Banner } = require("../../model/banner.js")
-const { Category } = require("../../model/category.js")
-const { Activity } = require("../../model/activity.js")
-const { SpuPaging } = require("../../model/spu-paging.js")
+const { Theme } = require("../../models/theme.js")
+const { Banner } = require("../../models/banner.js")
+const { Category } = require("../../models/category.js")
+const { Activity } = require("../../models/activity.js")
+const { SpuPaging } = require("../../models/spu-paging.js")
 
 Page({
 

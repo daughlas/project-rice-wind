@@ -1,0 +1,5 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <s-realm></s-realm>
+</view>
+
