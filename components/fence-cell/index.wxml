@@ -1,0 +1,6 @@
+<!--components/fence-cell/index.wxml-->
+<view class="container">
+  <div class="inner-container">
+    <text>{{cell.title}}</text>
+  </div>
+</view>

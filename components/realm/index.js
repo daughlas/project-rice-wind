@@ -20,6 +20,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    bindInitData (fenceGroup) {
+      this.setData({
+        fences: fenceGroup.fences
+      })
+    }
 
   },
   /**
@@ -47,6 +52,7 @@ Component({
       //TODO 删除掉
       const fenceGroup = new FenceGroup(spu)
       fenceGroup.initFences()
+      this.bindInitData(fenceGroup)
     }
   }
 })
