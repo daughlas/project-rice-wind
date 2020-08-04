@@ -79,7 +79,6 @@ Page({
    */
   onReachBottom: async function () {
     const data = await this.data.spuPaging.getMoreData()
-    console.log(this.data.spuPaging)
     if (!data) {
       return
     }

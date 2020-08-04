@@ -15,12 +15,8 @@ Page({
    */
   onLoad: async function (options) {
     // 开发的时候用一下 2 这个 id
-    const pid = options.pid || 2
+    const pid = options.pid
     const spu = await Spu.getDetail(pid)
-    
-    function handleData(skuList) {
-
-    }
     this.setData({
       spu
     })
