@@ -1,4 +1,5 @@
-const { FenceGroup } = require("../models/fence-group")
+import { FenceGroup } from "../models/fence-group"
+import { Judger } from '../models/judger'
 
 // components/realm/index.js
 Component({
@@ -13,9 +14,24 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    judger: Object
   },
+  /**
+   * observer
+   */
+  observers: {
+    'spu': function (spu) {
+      if (!spu) {
+        return
+      }
+      //TODO 删除掉
+      const fenceGroup = new FenceGroup(spu)
+      fenceGroup.initFences()
+      this.bindInitData(fenceGroup)
 
+      this.data.judger = new Judger(fenceGroup)
+    }
+  },
   /**
    * 组件的方法列表
    */
@@ -23,6 +39,15 @@ Component({
     bindInitData (fenceGroup) {
       this.setData({
         fences: fenceGroup.fences
+      })
+    },
+    onCellTap(event) {
+      const { cell, x, y } = event.detail
+      const judger = this.data.judger
+      judger.judge(cell, x, y)
+      console.log(judger.fenceGroup.fences)
+      this.setData({
+        fences: judger.fenceGroup.fences
       })
     }
 
@@ -39,20 +64,6 @@ Component({
     },
     create () {
 
-    }
-  },
-  /**
-   * observer
-   */
-  observers: {
-    'spu': function (spu) {
-      if (!spu) {
-        return
-      }
-      //TODO 删除掉
-      const fenceGroup = new FenceGroup(spu)
-      fenceGroup.initFences()
-      this.bindInitData(fenceGroup)
     }
   }
 })
