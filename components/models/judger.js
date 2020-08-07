@@ -7,7 +7,6 @@ class Judger {
 
   fenceGroup
   pathDict = []
-  currentCell
   skuPending
 
 
@@ -19,6 +18,12 @@ class Judger {
 
   _initSkuPending () {
     this.skuPending = new SkuPending()
+    const defaultSku = this.fenceGroup.getDefaultSku()
+    if (!defaultSku) {
+      return
+    }
+    this.skuPending.init(defaultSku)
+    this.judge(null, null, null, true)
   }
 
   _initPathDict () {
@@ -29,9 +34,11 @@ class Judger {
     })
   }
 
-  judge (cell, x, y) {
-    this.currentCell = { cell, x, y }
-    this._changeCurrentCellStatus(cell, x, y)
+  judge (cell, x, y, isInit = false) {
+    if (!isInit) {
+      this._changeCurrentCellStatus(cell, x, y)
+    }
+    
     this.fenceGroup.eachCell(this._changeOtherCellCellStatus)
   }
 
@@ -44,9 +51,9 @@ class Judger {
     }
     const isIn = this._isInDict(path)
     if (isIn) {
-      this.fenceGroup.fences[x].cells[y].status = FenceCellStatus.WAITING
+      this.fenceGroup.setCellStatusByXY(x, y, FenceCellStatus.WAITING)
     } else {
-      this.fenceGroup.fences[x].cells[y].status = FenceCellStatus.FORBIDDEN
+      this.fenceGroup.setCellStatusByXY(x, y, FenceCellStatus.FORBIDDEN)
     }
   }
 
@@ -84,13 +91,12 @@ class Judger {
   }
 
   _changeCurrentCellStatus(cell, x, y) {
-    const target = this.fenceGroup.fences[x].cells[y]
     if (cell.status === FenceCellStatus.WAITING) {
-      target.status = FenceCellStatus.SELECTED
+      this.fenceGroup.setCellStatusByXY(x, y, FenceCellStatus.SELECTED)
       this.skuPending.insertCell(cell, x)
     }
     if (cell.status === FenceCellStatus.SELECTED) {
-      target.status = FenceCellStatus.WAITING
+      this.fenceGroup.setCellStatusByXY(x, y, FenceCellStatus.WAITING)
       this.skuPending.removeCell(x)
     }
   }
