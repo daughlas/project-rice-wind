@@ -11,9 +11,9 @@ class Judger {
 
 
   constructor (fenceGroup) {
-    this.fenceGroup = fenceGroup
-    this._initSkuPending()
+    this.fenceGroup = fenceGroup    
     this._initPathDict()
+    this._initSkuPending()
   }
 
   _initSkuPending () {
@@ -23,6 +23,9 @@ class Judger {
       return
     }
     this.skuPending.init(defaultSku)
+    this.skuPending.pending.forEach(cell => {
+      this.fenceGroup.setCellStatusById(cell.id, FenceCellStatus.SELECTED)
+    })
     this.judge(null, null, null, true)
   }
 
@@ -38,15 +41,14 @@ class Judger {
     if (!isInit) {
       this._changeCurrentCellStatus(cell, x, y)
     }
-    
     this.fenceGroup.eachCell(this._changeOtherCellCellStatus)
   }
 
   _changeOtherCellCellStatus = (cell, x, y) => {
     // 潜在路径
     const path = this._findPotentialPath(cell, x, y)
-    // console.log(path)
     if (!path) {
+      // 这种情况是当前行选中的这一个
       return
     }
     const isIn = this._isInDict(path)

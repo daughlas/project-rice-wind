@@ -27,9 +27,8 @@ Component({
       //TODO 删除掉
       const fenceGroup = new FenceGroup(spu)
       fenceGroup.initFences()
-      this.bindInitData(fenceGroup)
-
       this.data.judger = new Judger(fenceGroup)
+      this.bindInitData(fenceGroup)
     }
   },
   /**
@@ -45,7 +44,6 @@ Component({
       const { cell, x, y } = event.detail
       const judger = this.data.judger
       judger.judge(cell, x, y)
-      console.log(judger.fenceGroup.fences)
       this.setData({
         fences: judger.fenceGroup.fences
       })
