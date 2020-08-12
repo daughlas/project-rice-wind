@@ -11,7 +11,8 @@ class Judger {
 
 
   constructor (fenceGroup) {
-    this.fenceGroup = fenceGroup    
+    this.fenceGroup = fenceGroup
+    // 先初始化 path Dict 保存所有可能路径
     this._initPathDict()
     this._initSkuPending()
   }
@@ -23,11 +24,16 @@ class Judger {
       return
     }
     this.skuPending.init(defaultSku)
+    this._initSelectedCell(defaultSku)
+  }
+
+  _initSelectedCell() {
     this.skuPending.pending.forEach(cell => {
       this.fenceGroup.setCellStatusById(cell.id, FenceCellStatus.SELECTED)
     })
     this.judge(null, null, null, true)
   }
+
 
   _initPathDict () {
     this.fenceGroup.spu.sku_list.forEach(sku => {
