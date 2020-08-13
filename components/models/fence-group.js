@@ -53,6 +53,12 @@ class FenceGroup {
     this.fences = fences
   }
 
+  getSku(skuCode) {
+    const fullSkuCode = this.spu.id + '$' + skuCode
+    const sku = this.skuList.find(s => s.code === fullSkuCode)
+    return sku ? sku : null
+  }
+
   _createFence() {
     const fence = new Fence()
     return fence
@@ -64,6 +70,10 @@ class FenceGroup {
       m.push(sku.specs)
     })
     return new Matrix(m)
+  }
+
+  getTitleByIndex(i) {
+    return this.fences[i].title
   }
 
   /**

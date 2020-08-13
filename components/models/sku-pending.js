@@ -1,9 +1,10 @@
 import { FenceCell } from './fence-cell'
 class SkuPending {
     pending = []
+    size
 
-    constructor () {
-
+    constructor (size) {
+        this.size = size
     }
 
     init(sku) {
@@ -12,6 +13,41 @@ class SkuPending {
             this.insertCell(cell, i)
         })
     }
+
+    getCurrentSpecValues() {
+        // 模型类不要转化 UI 的东西
+        // let str = this.pending.filter(cell => cell).map(cell => cell.title).join('、')
+        const values = this.pending.map(cell => cell ? cell.title : null)
+        return values
+    }
+
+    getMissingSpecKeysIndex() {
+        const keysIndex = []
+        for (let i = 0; i < this.size; i++) {
+            if (!this.pending[i]) {
+                keysIndex.push(i)
+            }
+        }
+        return keysIndex
+    }
+
+    // 是否确认了完整的 SKU
+    isIntact() {
+        if (this.size !== this.pending.length) {
+            return false
+        }
+        for (let i = 0; i < this.size; i++) {
+            if (this._isEmptyPart(i)) {
+                return false
+            }
+        }
+        return true
+    }
+
+    _isEmptyPart(index) {
+        return this.pending[index] ? false : true
+    }
+
 
     insertCell(cell, x) {
         this.pending[x] = cell
@@ -31,6 +67,10 @@ class SkuPending {
             return false
         }
         return cell.id === pendingCell.id
+    }
+
+    getSkuCode() {
+        return this.pending.map(cell => cell.getFenceCellCode()).join('#')
     }
 }
 

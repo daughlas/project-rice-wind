@@ -65,10 +65,17 @@
 			"current": -1,
 			"list": [
 				{
-					"id": -1,
-					"name": "pages/detail/detail",
+					"id": 0,
+					"name": "有规格",
 					"pathName": "pages/detail/detail",
 					"query": "pid=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "无规格",
+					"pathName": "pages/detail/detail",
+					"query": "pid=11",
 					"scene": null
 				}
 			]
